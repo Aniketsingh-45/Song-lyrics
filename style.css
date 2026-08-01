@@ -1,0 +1,324 @@
+:root {
+    --bg-color: #0f0c29;
+    --text-color: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent-color: #ff6b6b;
+    --accent-hover: #ff8787;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Animated Background */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+}
+
+.shape {
+    position: absolute;
+    filter: blur(80px);
+    border-radius: 50%;
+    animation: float 20s infinite alternate;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: #ff00cc;
+    top: -10%;
+    left: -10%;
+    animation-delay: 0s;
+    opacity: 0.5;
+}
+
+.shape-2 {
+    width: 500px;
+    height: 500px;
+    background: #333399;
+    bottom: -20%;
+    right: -10%;
+    animation-delay: -5s;
+    opacity: 0.6;
+}
+
+.shape-3 {
+    width: 300px;
+    height: 300px;
+    background: #00c9ff;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -10s;
+    opacity: 0.4;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(100px, 100px) rotate(360deg); }
+}
+
+/* Main Container */
+.player-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px;
+    width: 90%;
+    max-width: 900px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #fff, #a5a5a5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #ccc;
+    font-size: 1rem;
+}
+
+/* Song Selector */
+.song-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.song-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.song-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.song-btn.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+}
+
+/* Player Content */
+.player-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .player-content {
+        flex-direction: column;
+    }
+}
+
+.now-playing {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.disk {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #222, #111, #333, #111);
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.disk-center {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #ff6b6b;
+    border: 15px solid #111;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.disk::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.disk.spin {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+#current-song-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.control-btn:not(:disabled):hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.play-btn {
+    background: var(--accent-color);
+    width: 60px;
+    height: 60px;
+}
+
+.play-btn:not(:disabled):hover {
+    background: var(--accent-hover);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+}
+
+/* Lyrics Area */
+.lyrics-container {
+    flex: 1.5;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 30px;
+    height: 350px;
+    width: 100%;
+    overflow-y: auto;
+    position: relative;
+    scroll-behavior: smooth;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Custom Scrollbar */
+.lyrics-container::-webkit-scrollbar {
+    width: 6px;
+}
+.lyrics-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.lyrics-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.lyrics-display {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.lyric-line {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.3s ease, transform 0.3s ease;
+    min-height: 30px;
+}
+
+.lyric-line.active {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transform: scale(1.02);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.lyric-char {
+    display: inline-block;
+    opacity: 0;
+}
+
+.lyric-char.visible {
+    opacity: 1;
+    animation: popIn 0.2s ease forwards;
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: translateY(5px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    font-style: italic;
+    margin-top: 100px;
+}

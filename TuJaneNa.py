@@ -2,7 +2,7 @@ import vlc
 import time
 import sys
 
-p=vlc.MediaPlayer("Dagabaaz Re - Rahat Fateh Ali Khan, Shreya Ghoshal.mp3")
+p=vlc.MediaPlayer("Tu Jaane Na - Atif Aslam, Pritam.m4a")
 
 p.play()
 

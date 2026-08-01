@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Lyrics Player</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <main class="player-container">
+        <header>
+            <h1>Music & Lyrics</h1>
+            <p>Select a track to start the experience</p>
+        </header>
+
+        <div class="song-selector">
+            <button class="song-btn" data-song="tujanena">Tu Jane Na</button>
+            <button class="song-btn" data-song="arzkiyahai">Arz Kiya Hai</button>
+            <button class="song-btn" data-song="dagabaaz">Dagabaaz Re</button>
+        </div>
+
+        <div class="player-content">
+            <div class="now-playing">
+                <div class="disk" id="disk">
+                    <div class="disk-center"></div>
+                </div>
+                <h2 id="current-song-title">Select a Song</h2>
+                <div class="controls">
+                    <button id="play-pause-btn" class="control-btn play-btn" disabled>
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="play-icon"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="pause-icon" style="display: none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                    </button>
+                    <button id="stop-btn" class="control-btn" disabled>
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="lyrics-container">
+                <div id="lyrics-display" class="lyrics-display">
+                    <p class="placeholder">Lyrics will appear here...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <audio id="audio-player"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
